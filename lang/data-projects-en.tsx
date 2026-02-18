@@ -18,16 +18,16 @@ const projects = [
   },
   {
     id: 2,
-    title: "KSA Student Systems Support",
+    title: "Student Systems Support",
     description:
-      "During attachment at Kenya School of Agriculture, developed and maintained student database operations, improved reliability, and supported system security against cyber threats.",
+      "During attachment at Kenya School of Agriculture, developed and maintained a student database operations, improved reliability, and supported system security against cyber threats.",
     image_path: neuralNetworkFromScratchImg,
     link: "#",
     color: "#0f766e",
   },
   {
     id: 3,
-    title: "Hackathon & Election Operations",
+    title: "Election Operations",
     description:
       "Contributed to software ideas at the Zetech Night Hackathon and supported real student election operations by validating users and ensuring secure, smooth system usage.",
     image_path: rayTracingImg,

@@ -1,33 +1,54 @@
-<p align="center">
-  <a href="https://github.com/Raseraa0">
-   🏠 Go back to my GitHub home page 🏠 
-  </a>
-</p>
+# Portfolio (Next.js + Parallax)
 
----
+Interactive single-page portfolio built with Next.js, React, and `@react-spring/parallax`.
 
-# 📌 Portfolio
+## Run locally
 
-![Project preview](./public/img/preview.png)
+```bash
+npm install
+npm run dev
+```
 
-## 📝 Overview
+## Workspace order (read this first -> next)
 
-Portfolio deployed on `GitHub Pages`. The main idea behind this portfolio was to use the `parallax` effect. I decided to use an image from the game `Firewatch` and build my color palette around it. I created the different parallax layers myself.
+1. `package.json`  
+   Scripts and dependencies.
+2. `next.config.ts`  
+   Next.js build/export behavior.
+3. `app/layout.tsx`  
+   Global providers and global CSS entry.
+4. `app/page.tsx`  
+   Main parallax container and section orchestration.
+5. Section files in `app/`  
+   `Hero.tsx` -> `About.tsx` -> `Projects.tsx` -> `Skills.tsx` -> `Footer.tsx`.
+6. Reusable UI in `app/components/`  
+   Building blocks used by sections.
+7. Data in `lang/`  
+   English-only text, projects, and skills datasets.
+8. Styling in `app/style/` and `tailwind.config.ts`  
+   Component-specific CSS and theme tokens.
 
-This site is animated and responsive, but nothing beats visiting it to see for yourself.
-- 🚀 [Go to my portfolio](https://raseraa0.github.io)
+## System flowchart
 
-## 🧰 Toolbox
+```mermaid
+flowchart TD
+    A[Browser Request /] --> B[app/layout.tsx]
+    B --> C[LanguageProvider]
+    C --> D[app/page.tsx]
+    D --> E[Parallax Container]
+    E --> F[Hero]
+    E --> G[About]
+    E --> H[Projects]
+    E --> I[Skills]
+    E --> J[Footer]
+    G --> K[useLanguage + texts]
+    H --> L[data-projects-en]
+    I --> M[data-skills-en]
+    F --> N[Background Layers + Navigation]
+```
 
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+## Notes
 
----
-<p align="center">
-  <a href="https://github.com/Raseraa0">
-   🏠 Go back to my GitHub home page 🏠 
-  </a>
-</p>
+- French datasets and language toggling were removed to keep runtime simpler.
+- Unused theme switch/context code and unused reference assets were removed.
+- Detailed flow docs: `docs/SYSTEM_FLOW.md`.
