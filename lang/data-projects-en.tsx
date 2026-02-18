@@ -2,37 +2,37 @@
  * Project information (English)
  */
 
-import wallpaperGeneratorImg from "../public/img/projects/WallpaperGenerator.png";
-import neuralNetworkFromScratchImg from "../public/img/projects/NeuralNetwork.png";
-import rayTracingImg from "../public/img/projects/RayTracing.png";
+import voterPredictionSystemImg from "../public/img/projects/VoterPredictionSystem.jpg";
+import roadAccidentPredictionImg from "../public/img/projects/RoadAccidentPrediction.jpg";
+import articlesApiImg from "../public/img/projects/ArticlesAPI.jpg";
 
 const projects = [
   {
     id: 1,
-    title: "E-Voting System (Zetech University)",
+    title: "Voter Prediction System (Flask + ML)",
     description:
-      "Designed and developed a secure voting system using PHP, JavaScript, and MySQL. Implemented voter authentication, real-time candidate display, and reliable result management.",
-    image_path: wallpaperGeneratorImg,
-    link: "#",
-    color: "#c2410c",
-  },
-  {
-    id: 2,
-    title: "Student Systems Support",
-    description:
-      "During attachment at Kenya School of Agriculture, developed and maintained a student database operations, improved reliability, and supported system security against cyber threats.",
-    image_path: neuralNetworkFromScratchImg,
-    link: "#",
+      "AI-driven voting preference platform built with Flask, SQLAlchemy, and scikit-learn. Includes authentication, admin controls, model retraining, audit logs, and live model monitoring.",
+    image_path: voterPredictionSystemImg,
+    link: "https://github.com/kipkorirfelix/Votes-predicting-model-based-on-Social-Media-Usage-SMU-",
     color: "#0f766e",
   },
   {
-    id: 3,
-    title: "Election Operations",
+    id: 2,
+    title: "Road Accident Prediction Model",
     description:
-      "Contributed to software ideas at the Zetech Night Hackathon and supported real student election operations by validating users and ensuring secure, smooth system usage.",
-    image_path: rayTracingImg,
-    link: "https://github.com/kipkorirfelix",
-    color: "#6d28d9",
+      "Machine learning model in Python focused on road-accident prediction from structured input data, with trained-model artifact generation for practical inference workflows.",
+    image_path: roadAccidentPredictionImg,
+    link: "https://github.com/kipkorirfelix/road-accident-predicting-model",
+    color: "#b45309",
+  },
+  {
+    id: 3,
+    title: "ArticlesAPI (Java Backend)",
+    description:
+      "Backend API project in Java focused on article service logic and endpoint-oriented architecture, demonstrating practical REST-style backend implementation.",
+    image_path: articlesApiImg,
+    link: "https://github.com/Felixtyler254/ArticlesAPI",
+    color: "#0b3b8a",
   },
 ];
 
