@@ -4,6 +4,54 @@ import Project from "./components/Project";
 import { useOnScreen } from "./hooks/useOnScreen";
 import { cn } from "@/lib/utils";
 
+const PROJECT_CARDS = [
+  {
+    id: 1,
+    transitionClass: "transition-all duration-1000 ease-in-out hover:duration-300",
+    hiddenClass: "pointer-events-none opacity-0",
+  },
+  {
+    id: 2,
+    transitionClass:
+      "transition-all delay-300 duration-1000 ease-in-out hover:delay-0 hover:duration-300",
+    hiddenClass: "opacity-0",
+  },
+  {
+    id: 3,
+    transitionClass:
+      "transition-all delay-[600ms] duration-1000 ease-in-out hover:delay-0 hover:duration-300",
+    hiddenClass: "opacity-0",
+  },
+] as const;
+
+type ProjectCardProps = {
+  id: number;
+  isExpanded: boolean;
+  onExpand: (id: number) => void;
+  transitionClass: string;
+  hiddenClass: string;
+};
+
+function AnimatedProjectCard({
+  id,
+  isExpanded,
+  onExpand,
+  transitionClass,
+  hiddenClass,
+}: ProjectCardProps) {
+  const [projectRef, projectVisible] = useOnScreen<HTMLDivElement>();
+
+  return (
+    <Project
+      ref={projectRef}
+      id={id}
+      isExpanded={isExpanded}
+      onExpand={onExpand}
+      className={cn(transitionClass, projectVisible ? "" : hiddenClass)}
+    />
+  );
+}
+
 /** Projects section with expandable cards. */
 function Projects() {
   const [expandedProjectId, setExpandedProjectId] = useState(-1);
@@ -23,10 +71,6 @@ function Projects() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const [project1Ref, project1Visible] = useOnScreen<HTMLDivElement>();
-  const [project2Ref, project2Visible] = useOnScreen<HTMLDivElement>();
-  const [project3Ref, project3Visible] = useOnScreen<HTMLDivElement>();
-
   return (
     <ParallaxLayer
       offset={2}
@@ -34,36 +78,16 @@ function Projects() {
       className="h-min-[600px] flex items-center justify-center bg-blue-9 dark:bg-blue-4"
     >
       <div className="flex h-full w-full flex-col justify-center lg:h-4/5 lg:min-h-[600px] lg:flex-row">
-        <Project
-          ref={project1Ref}
-          id={1}
-          isExpanded={expandedProjectId === 1}
-          onExpand={handleExpandProject}
-          className={cn(
-            "transition-all duration-1000 ease-in-out hover:duration-300",
-            project1Visible ? "" : "pointer-events-none opacity-0"
-          )}
-        />
-        <Project
-          ref={project2Ref}
-          id={2}
-          isExpanded={expandedProjectId === 2}
-          onExpand={handleExpandProject}
-          className={cn(
-            "transition-all delay-300 duration-1000 ease-in-out hover:delay-0 hover:duration-300",
-            project2Visible ? "" : "opacity-0"
-          )}
-        />
-        <Project
-          ref={project3Ref}
-          id={3}
-          isExpanded={expandedProjectId === 3}
-          onExpand={handleExpandProject}
-          className={cn(
-            "transition-all delay-[600ms] duration-1000 ease-in-out hover:delay-0 hover:duration-300",
-            project3Visible ? "" : "opacity-0"
-          )}
-        />
+        {PROJECT_CARDS.map((projectCard) => (
+          <AnimatedProjectCard
+            key={projectCard.id}
+            id={projectCard.id}
+            isExpanded={expandedProjectId === projectCard.id}
+            onExpand={handleExpandProject}
+            transitionClass={projectCard.transitionClass}
+            hiddenClass={projectCard.hiddenClass}
+          />
+        ))}
       </div>
     </ParallaxLayer>
   );

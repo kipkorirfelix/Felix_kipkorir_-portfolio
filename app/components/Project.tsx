@@ -7,7 +7,7 @@ import "../style/project.css";
 import SocialMedia from "./SocialMedia";
 
 import Image from "next/image";
-import { Ref } from "react";
+import { forwardRef } from "react";
 
 import projectsEn from "../../lang/data-projects-en";
 
@@ -15,35 +15,36 @@ import githubBadge from "../../public/img/social_media/github-badge.svg";
 import { useLanguage } from "../contexts/language-context";
 
 type Props = {
-  ref?: Ref<HTMLDivElement>;
   id: number;
   isExpanded: boolean;
   onExpand: (id: number) => void;
   className?: string;
 };
 
+const darkenColor = (color: string, percent: number) => {
+  const hex = color.replace("#", "");
+  const red = parseInt(hex.substring(0, 2), 16);
+  const green = parseInt(hex.substring(2, 4), 16);
+  const blue = parseInt(hex.substring(4, 6), 16);
+
+  const newRed = Math.floor(red * (1 - percent));
+  const newGreen = Math.floor(green * (1 - percent));
+  const newBlue = Math.floor(blue * (1 - percent));
+
+  return `#${((1 << 24) | (newRed << 16) | (newGreen << 8) | newBlue)
+    .toString(16)
+    .slice(1)}`;
+};
+
 /** Single expandable project card. */
-function Project({ ref, id, isExpanded, onExpand, className }: Props) {
+const Project = forwardRef<HTMLDivElement, Props>(function Project(
+  { id, isExpanded, onExpand, className },
+  ref
+) {
   const { texts } = useLanguage();
   const selectedProject = projectsEn.find((project) => project.id === id);
 
   const baseColor = selectedProject?.color ?? "#000000";
-
-  const darkenColor = (color: string, percent: number) => {
-    const hex = color.replace("#", "");
-    const red = parseInt(hex.substring(0, 2), 16);
-    const green = parseInt(hex.substring(2, 4), 16);
-    const blue = parseInt(hex.substring(4, 6), 16);
-
-    const newRed = Math.floor(red * (1 - percent));
-    const newGreen = Math.floor(green * (1 - percent));
-    const newBlue = Math.floor(blue * (1 - percent));
-
-    return `#${((1 << 24) | (newRed << 16) | (newGreen << 8) | newBlue)
-      .toString(16)
-      .slice(1)}`;
-  };
-
   const darkenedColor = darkenColor(baseColor, 0.2);
 
   return (
@@ -123,6 +124,6 @@ function Project({ ref, id, isExpanded, onExpand, className }: Props) {
       </div>
     </div>
   );
-}
+});
 
 export default Project;

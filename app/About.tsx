@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils";
 import SocialMedia from "./components/SocialMedia";
 
 import selfieImg from "../public/img/selfie_v1.jpg";
-import githubBadge from "../public/img/social_media/github-badge.svg";
-import linkedinBadge from "../public/img/social_media/linkedin-badge.svg";
-import mailBadge from "../public/img/social_media/mail-badge.svg";
 import { useLanguage } from "./contexts/language-context";
+import { SOCIAL_MEDIA_ITEMS } from "./constants/social-media";
+
+const ARC_COLORS = ["bg-blue-8", "bg-blue-7", "bg-blue-5", "bg-blue-6", "bg-blue-4"];
 
 /** About section with profile card, CV link, and timeline. */
 function About() {
@@ -23,6 +23,11 @@ function About() {
   const [contactRef, contactVisible] = useOnScreen<HTMLDivElement>();
 
   const { texts } = useLanguage();
+  const socialAltByKind = {
+    git: texts.hero.social.altGit,
+    linkedin: texts.hero.social.altLinkedin,
+    mail: texts.hero.social.altMail,
+  } as const;
 
   return (
     <ParallaxLayer
@@ -31,11 +36,13 @@ function About() {
       className="relative flex min-h-[600px] flex-col items-center justify-evenly bg-blue-9 dark:bg-blue-4 lg:flex-row"
     >
       <div className="absolute top-0 -z-10 hidden h-32 w-full flex-col items-center bg-blue-9 dark:flex">
-        <div className="half-ellipse absolute bg-blue-8" />
-        <div className="half-ellipse absolute top-2 bg-blue-7" />
-        <div className="half-ellipse absolute top-4 bg-blue-5" />
-        <div className="half-ellipse absolute top-6 bg-blue-6" />
-        <div className="half-ellipse absolute top-8 bg-blue-4" />
+        {ARC_COLORS.map((colorClass, index) => (
+          <div
+            key={colorClass}
+            className={cn("half-ellipse absolute", colorClass)}
+            style={{ top: `${index * 0.5}rem` }}
+          />
+        ))}
       </div>
 
       <div
@@ -86,32 +93,19 @@ function About() {
               contactVisible ? "" : "-translate-x-40 opacity-0"
             )}
           >
-            <div className="rounded-full bg-gradient-to-tr from-blue-1 to-blue-6 p-px duration-150 hover:scale-125">
-              <SocialMedia
-                svgSrc={githubBadge}
-                num="1"
-                href="https://github.com/kipkorirfelix"
-                alt={texts.hero.social.altGit}
-              />
-            </div>
-
-            <div className="rounded-full bg-gradient-to-tr from-blue-1 to-blue-6 p-px duration-150 hover:scale-125">
-              <SocialMedia
-                svgSrc={linkedinBadge}
-                num="2"
-                href="tel:+254797751084"
-                alt={texts.hero.social.altLinkedin}
-              />
-            </div>
-
-            <div className="rounded-full bg-gradient-to-tr from-blue-1 to-blue-6 p-px duration-150 hover:scale-125">
-              <SocialMedia
-                svgSrc={mailBadge}
-                num="3"
-                href="mailto:felixtyler530@gmail.com"
-                alt={texts.hero.social.altMail}
-              />
-            </div>
+            {SOCIAL_MEDIA_ITEMS.map((socialItem) => (
+              <div
+                key={socialItem.num}
+                className="rounded-full bg-gradient-to-tr from-blue-1 to-blue-6 p-px duration-150 hover:scale-125"
+              >
+                <SocialMedia
+                  svgSrc={socialItem.svgSrc}
+                  num={socialItem.num}
+                  href={socialItem.href}
+                  alt={socialAltByKind[socialItem.kind]}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

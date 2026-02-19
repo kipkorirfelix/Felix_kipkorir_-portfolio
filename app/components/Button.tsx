@@ -1,15 +1,17 @@
 import { cn } from "@/lib/utils";
-import { Ref } from "react";
+import { forwardRef } from "react";
 
 type Props = {
-  ref?: Ref<HTMLButtonElement>;
   text: string;
   className?: string;
   onClick?: () => void;
 };
 
 /** Reusable gradient button used across the portfolio. */
-function Button({ ref, text, className = "", onClick = () => {} }: Props) {
+const Button = forwardRef<HTMLButtonElement, Props>(function Button(
+  { text, className = "", onClick = () => {} },
+  ref
+) {
   return (
     <button
       ref={ref}
@@ -17,11 +19,11 @@ function Button({ ref, text, className = "", onClick = () => {} }: Props) {
       onClick={onClick}
     >
       <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-4 to-blue-5" />
-      <div className="group relative rounded-[6px] bg-blue-9 px-8 py-2 text-xs font-semibold transition duration-200 hover:bg-transparent hover:text-blue-9 active:blur-sm lg:text-base">
+      <div className="group relative rounded-[6px] bg-blue-9 px-8 py-2 text-xs font-semibold text-white-1 transition duration-200 hover:bg-transparent hover:text-blue-9 active:blur-sm lg:text-base">
         {text}
       </div>
     </button>
   );
-}
+});
 
 export default Button;

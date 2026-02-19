@@ -106,6 +106,12 @@ const TimelineStep = ({
 function Timeline({ className = "" }: Props) {
   const [lineRef, lineVisible] = useOnScreen<HTMLUListElement>();
   const { texts } = useLanguage();
+  const timelineSteps = [
+    { ...texts.about.timeline.ensimag, right: false },
+    { ...texts.about.timeline.oxyl, right: true },
+    { ...texts.about.timeline.upc, right: false },
+    { ...texts.about.timeline.sopra, right: true },
+  ];
 
   return (
     <ul
@@ -118,30 +124,17 @@ function Timeline({ className = "" }: Props) {
           : "-translate-y-20 opacity-0 lg:-translate-x-20 lg:-translate-y-0"
       )}
     >
-      <TimelineStep
-        name={texts.about.timeline.ensimag.name}
-        desc={texts.about.timeline.ensimag.desc}
-        date={texts.about.timeline.ensimag.date}
-        isFirst
-      />
-      <TimelineStep
-        name={texts.about.timeline.oxyl.name}
-        desc={texts.about.timeline.oxyl.desc}
-        date={texts.about.timeline.oxyl.date}
-        right
-      />
-      <TimelineStep
-        name={texts.about.timeline.upc.name}
-        desc={texts.about.timeline.upc.desc}
-        date={texts.about.timeline.upc.date}
-      />
-      <TimelineStep
-        name={texts.about.timeline.sopra.name}
-        desc={texts.about.timeline.sopra.desc}
-        date={texts.about.timeline.sopra.date}
-        right
-        isLast
-      />
+      {timelineSteps.map((step, index) => (
+        <TimelineStep
+          key={`${step.name}-${step.date}`}
+          name={step.name}
+          desc={step.desc}
+          date={step.date}
+          right={step.right}
+          isFirst={index === 0}
+          isLast={index === timelineSteps.length - 1}
+        />
+      ))}
     </ul>
   );
 }

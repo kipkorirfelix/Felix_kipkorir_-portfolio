@@ -23,17 +23,17 @@ const textsEn = {
   },
   about: {
     altPicture: "Profile picture",
-    desc: "Dedicated software engineering graduate from Zetech University with strong skills in software development, networking, and applied AI. I build reliable solutions that solve real problems and I enjoy learning fast in dynamic tech environments.",
+    desc: "Dedicated software engineer with strong skills in software development, networking, and applied AI. I build reliable solutions that solve real problems and I enjoy learning fast in dynamic tech environments.",
     seeCV: "View Resume",
     timeline: {
       ensimag: {
         name: "Zetech University",
-        desc: "BSc in Software Engineering (Expected Graduation: Nov 2025)",
+        desc: "BSc in Software Engineering",
         date: "2022 - 2025",
       },
       oxyl: {
         name: "Kenya School of Agriculture",
-        desc: "Software Engineer - system support, networking, and software service operations",
+        desc: "Software Engineer - System support, networking, and software service operations",
         date: "2025",
       },
       upc: {
@@ -44,7 +44,7 @@ const textsEn = {
       sopra: {
         name: "Technical Focus",
         desc: "REST APIs, Flask, Django REST Framework, SQLAlchemy, and cloud tooling",
-        date: "2024 - Present",
+        date: "2018 - Present",
       },
     },
   },
