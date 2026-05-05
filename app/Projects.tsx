@@ -73,7 +73,7 @@ function Projects() {
 
   return (
     <ParallaxLayer
-      offset={2}
+      offset={2.2}
       speed={0}
       className="h-min-[600px] flex items-center justify-center bg-blue-9 dark:bg-blue-4"
     >

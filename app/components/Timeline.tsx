@@ -32,13 +32,13 @@ const TimelineText = ({ name, desc, right = false }: TimelineTextProps) => {
   return (
     <div
       className={cn(
-        "p-fluide-anim flex w-20 flex-col items-center hover:scale-110 md:w-40 lg:h-32",
+        "p-fluide-anim flex w-32 max-w-[42vw] flex-col items-center hover:scale-105 md:w-56 lg:min-h-20 lg:w-64",
         right ? "timeline-end hover:translate-x-3" : "timeline-start hover:-translate-x-3"
       )}
     >
       <span
         className={cn(
-          "text-center text-base/4 opacity-90 lg:text-xl/5",
+          "text-center text-base/4 opacity-90 lg:text-lg/5",
           fontJersey15.className
         )}
       >
@@ -46,7 +46,7 @@ const TimelineText = ({ name, desc, right = false }: TimelineTextProps) => {
       </span>
       <div
         className={cn(
-          "mt-2 hidden text-center text-xs opacity-75 md:inline-block",
+          "mt-2 hidden text-center text-xs/4 opacity-75 md:inline-block lg:max-w-60",
           fontInter.className
         )}
       >
@@ -77,7 +77,12 @@ const TimelineMiddle = () => {
 
 const TimelineDate = ({ date, right = false }: TimelineDateProps) => {
   return (
-    <div className={cn("text-xs opacity-75", right ? "timeline-end" : "timeline-start")}>
+    <div
+      className={cn(
+        "w-24 text-center text-xs/4 opacity-75 md:w-32",
+        right ? "timeline-end" : "timeline-start"
+      )}
+    >
       {date}
     </div>
   );
@@ -110,6 +115,8 @@ function Timeline({ className = "" }: Props) {
     { ...texts.about.timeline.ensimag, right: false },
     { ...texts.about.timeline.oxyl, right: true },
     { ...texts.about.timeline.upc, right: false },
+    { ...texts.about.timeline.aiTrainingDataContributor, right: true },
+    { ...texts.about.timeline.pictusLabs, right: false },
     { ...texts.about.timeline.sopra, right: true },
   ];
 
@@ -117,7 +124,7 @@ function Timeline({ className = "" }: Props) {
     <ul
       ref={lineRef}
       className={cn(
-        "delay-400 timeline transition-all duration-1000 ease-in-out lg:timeline-vertical",
+        "delay-400 timeline relative z-20 my-4 transition-all duration-1000 ease-in-out lg:timeline-vertical lg:my-0",
         className,
         lineVisible
           ? ""

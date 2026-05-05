@@ -52,15 +52,15 @@ export default function Home() {
 
       <Parallax
         ref={parallaxRef}
-        pages={4}
+        pages={4.2}
         style={{ top: "0", left: "0" }}
         className="p-animation bg-blue-9"
       >
         <Hero parallaxRef={parallaxRef} />
 
         <BackgroundColor color="#00131c" offset={1} />
-        <BackgroundColor color="#00131c" offset={2} />
-        <BackgroundColor color="#00131c" offset={3} />
+        <BackgroundColor color="#00131c" offset={2.2} />
+        <BackgroundColor color="#00131c" offset={3.2} />
 
         <About />
         <Projects />

@@ -30,7 +30,7 @@ function Footer() {
 
   return (
     <ParallaxLayer
-      offset={3}
+      offset={3.2}
       speed={0}
       className="min-[600px] pointer-events-none relative"
     >

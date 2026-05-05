@@ -41,6 +41,16 @@ const textsEn = {
         desc: "Electoral Systems Support Specialist (Software) - secure election platform operations",
         date: "2025",
       },
+      aiTrainingDataContributor: {
+        name: "AI Training Data Video Contributor",
+        desc: "Video dataset annotation, labeling, and AI model training support",
+        date: "2026 - Present",
+      },
+      pictusLabs: {
+        name: "Pictus Labs",
+        desc: "Software Developer - scalable systems development and technical consulting",
+        date: "2026 - Present",
+      },
       sopra: {
         name: "Technical Focus",
         desc: "REST APIs, Flask, Django REST Framework, SQLAlchemy, and cloud tooling",

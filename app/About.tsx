@@ -32,8 +32,9 @@ function About() {
   return (
     <ParallaxLayer
       offset={1}
+      factor={1.2}
       speed={0}
-      className="relative flex min-h-[600px] flex-col items-center justify-evenly bg-blue-9 dark:bg-blue-4 lg:flex-row"
+      className="relative z-10 flex min-h-[720px] flex-col items-center justify-evenly gap-8 bg-blue-9 py-10 dark:bg-blue-4 lg:min-h-[600px] lg:flex-row lg:gap-6 lg:py-0"
     >
       <div className="absolute top-0 -z-10 hidden h-32 w-full flex-col items-center bg-blue-9 dark:flex">
         {ARC_COLORS.map((colorClass, index) => (
@@ -110,7 +111,7 @@ function About() {
         </div>
       </div>
 
-      <Timeline className="scale-90 lg:scale-110" />
+      <Timeline className="scale-95 lg:scale-100" />
     </ParallaxLayer>
   );
 }
