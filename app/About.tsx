@@ -60,6 +60,7 @@ function About() {
             src={selfieImg}
             alt={texts.about.altPicture}
             placeholder="blur"
+            loading="lazy"
             className={cn(
               "w-40 rounded-full transition-all duration-500 ease-in-out lg:w-64",
               imgVisible ? "" : "translate-x-40 opacity-0"

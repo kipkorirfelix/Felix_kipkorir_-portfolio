@@ -44,6 +44,9 @@ const metadataInfos: Metadata = {
     icon: "favicon.png",
   },
   metadataBase: new URL("https://github.com/kipkorirfelix"),
+  other: {
+    "google-adsense-account": "ca-pub-4598464068628898",
+  },
 };
 
 export default metadataInfos;

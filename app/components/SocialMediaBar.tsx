@@ -56,6 +56,7 @@ export default function SocialMediaBar({ speed }: Props) {
               svgSrc={socialItem.svgSrc}
               num={socialItem.num}
               href={socialItem.href}
+              priority
               alt={socialAltByKind[socialItem.kind]}
               onMouseEnter={(event) =>
                 updateIndicator(

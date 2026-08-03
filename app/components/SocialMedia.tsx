@@ -10,6 +10,7 @@ type Props = {
   num?: string;
   href?: string;
   alt?: string;
+  priority?: boolean;
   onMouseEnter?: MouseEventHandler<HTMLButtonElement>;
   onMouseLeave?: MouseEventHandler<HTMLButtonElement>;
 };
@@ -22,6 +23,7 @@ const SocialMedia = forwardRef<HTMLButtonElement, Props>(function SocialMedia(
     num = "0",
     href = "#",
     alt = "Social media icon",
+    priority = false,
     onMouseEnter,
     onMouseLeave,
   },
@@ -40,7 +42,7 @@ const SocialMedia = forwardRef<HTMLButtonElement, Props>(function SocialMedia(
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <Image src={svgSrc} alt={alt} priority />
+        <Image src={svgSrc} alt={alt} priority={priority} loading={priority ? undefined : "lazy"} />
       </button>
     </Link>
   );

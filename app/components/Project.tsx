@@ -89,6 +89,7 @@ const Project = forwardRef<HTMLDivElement, Props>(function Project(
                 src={selectedProject?.image_path ?? ""}
                 placeholder="blur"
                 alt=""
+                loading="lazy"
                 className={cn(
                   "absolute inset-0 duration-700",
                   isExpanded ? "h-full w-full object-cover brightness-[0.4]" : ""

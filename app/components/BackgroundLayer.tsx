@@ -19,6 +19,7 @@ function BackgroundLayer({ speed, path }: Props) {
           alt=""
           fill
           placeholder="blur"
+          loading="lazy"
           className="object-cover"
         />
       </div>

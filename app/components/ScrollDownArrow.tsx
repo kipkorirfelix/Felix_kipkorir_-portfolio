@@ -18,7 +18,7 @@ type ChevronProps = {
 };
 
 function Chevron({ className = "" }: ChevronProps) {
-  return <Image src={chevronImg} alt="" className={cn(className, "h-5 w-5 rotate-90")} />;
+  return <Image src={chevronImg} alt="" loading="lazy" className={cn(className, "h-5 w-5 rotate-90")} />;
 }
 
 function ThreeChevron({ className = "" }: ChevronProps) {
