@@ -4,6 +4,7 @@ import { fontInter } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import metadataInfos from "@/lib/metadata";
 import { LanguageProvider } from "./contexts/language-context";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = metadataInfos;
 
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={cn(fontInter.className, "p-minimal-size text-white-1 dark:text-blue-10")}>
         <LanguageProvider>{children}</LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
